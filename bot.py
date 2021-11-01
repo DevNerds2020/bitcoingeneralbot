@@ -92,7 +92,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://bitcoin-general-bot.herokuapp.com/' + ApiToken)
+    bot.set_webhook(url='https://bitcoingeneraltelegrambot.herokuapp.com/' + ApiToken)
     return "!", 200
 
 
