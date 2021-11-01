@@ -2,10 +2,10 @@ import os
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import requests
-from flask import Flask, request
+
+
 ApiToken = '2039655062:AAG7gokuNaoV-je_Is9HGU-e_WeVU2N1sic'
 bot = telebot.TeleBot(ApiToken)
-server = Flask(__name__)
 
 
 def sendcoins():
@@ -80,22 +80,4 @@ def callback_query(call):
     except:
         bot.send_message(call.from_user.id, 'something went wrong try again later')
 
-@server.route('/' + ApiToken, methods=['POST'])
-def getMessage():
-    json_string = request.get_data().decode('utf-8')
-    update = telebot.types.Update.de_json(json_string)
-    bot.process_new_updates([update])
-    return "!", 200
-
-
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url='https://bitcoingeneraltelegrambot.herokuapp.com/' + ApiToken)
-    bot.polling()
-    return "!", 200
-
-
-if __name__ == "__main__":
-    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
-
+bot.polling()
