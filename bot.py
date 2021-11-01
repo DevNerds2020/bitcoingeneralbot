@@ -92,6 +92,7 @@ def getMessage():
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url='https://bitcoingeneraltelegrambot.herokuapp.com/' + ApiToken)
+    bot.polling()
     return "!", 200
 
 
