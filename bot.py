@@ -80,7 +80,7 @@ def callback_query(call):
     except:
         bot.send_message(call.from_user.id, 'something went wrong try again later')
 
-
+bot.polling()
 @server.route('/' + ApiToken, methods=['POST'])
 def getMessage():
     json_string = request.get_data().decode('utf-8')
@@ -98,4 +98,4 @@ def webhook():
 
 if __name__ == "__main__":
     server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
-bot.polling()
+
