@@ -1,6 +1,5 @@
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
-from selenium import webdriver
 from time import sleep
 import requests
 import json
@@ -8,8 +7,6 @@ import json
 ApiToken = '2039655062:AAG7gokuNaoV-je_Is9HGU-e_WeVU2N1sic'
 
 bot = telebot.TeleBot(ApiToken)
-
-path = 'chromedriver.exe'
 
 
 def sendcoins():
@@ -26,8 +23,6 @@ def sendcoins():
     return message
 
 
-
-
 def getFearAndGreed():
     response = requests.get('https://alternative.me/crypto/fear-and-greed-index.png')
     file = open("f.png", "wb")
@@ -40,15 +35,7 @@ def getFearAndGreed():
 
 
 def getHeatmap():
-    driver = webdriver.Chrome(path)
-    driver.get('https://coinmarketcap.com/crypto-heatmap/')
-    sleep(1)
-    S = lambda X: driver.execute_script('return document.body.parentNode.scroll' + X)
-    driver.set_window_size(S('Width'),
-                           S('Height'))  # May need manual adjustment
-    driver.find_element_by_class_name('heatMapChart').screenshot('heatmap.png')
-    driver.quit()
-
+   pass
 
 def gen_markup():
     markup = InlineKeyboardMarkup()
