@@ -80,7 +80,6 @@ def callback_query(call):
     except:
         bot.send_message(call.from_user.id, 'something went wrong try again later')
 
-bot.polling()
 @server.route('/' + ApiToken, methods=['POST'])
 def getMessage():
     json_string = request.get_data().decode('utf-8')
